@@ -1,5 +1,5 @@
 @font-face {
-  font-family: "Bebas Neue";
+  font-family: "BebasNeueRegular";
   src: local("BebasNeueRegular"),
     url("../fonts/BebasNeueRegular.woff2") format("woff2"),
     url("../fonts/BebasNeueRegular.woff") format("woff");
@@ -117,7 +117,7 @@ path.current-floor {
   color: #635854;
   margin: 0;
 }
-.counter {
+.floor-counter {
   font-family: "BebasNeueRegular", sans-serif;
   font-size: 124px;
   color: #635854;
@@ -131,4 +131,117 @@ path.current-floor {
   border: none;
   padding: 16px 36px;
   cursor: pointer;
+}
+
+.modal {
+  position: fixed; /* фиксированная позиция, поверх всего сайта*/
+  left: 0; /* приклеиваем к левому краю*/
+  top: 0; /* приклеиваем к верху*/
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8); /* полупрозрачный фоновый черный цвет*/
+  display: flex; /* родительский эелемент-гибкий*/
+  justify-content: center;
+  align-items: center;
+  opacity: 0; /* скроем это окно*/
+  transform: scale(
+    0
+  ); /* сожмется до такого размера,что на сайте оно вообще не будет видно*/
+  transition: opacity 0.2s; /* плавно появляется окно*/
+}
+
+.is-open {
+  /* класс используется для того,чтобы появлялось модальное окно*/
+  opacity: 1;
+  transform: scale(1);
+}
+
+.modal-dialog {
+  max-width: 1000px;
+  min-height: 565px;
+  background-color: #fff;
+  flex-grow: 1;
+  display: flex;
+  position: relative;
+  opacity: 0;
+  transform: translateY(-10%);
+  transition: transform 0.2s opacity 0.2s;
+  transition-delay: 0.2s;
+}
+
+.is-open > .modal-dialog {
+  opacity: 1;
+  transform: translateY(0);
+}
+.modal-image {
+  background-color: #ebebeb;
+  width: 60%;
+  text-align: center; /* весь текст и картинки будут выравнены по центру*/
+  padding: 50px;
+}
+
+.flats path {
+  /*при обычном состоянии они скрыты*/
+  opacity: 0;
+  cursor: pointer;
+}
+.flats path:hover {
+  /*при наведении они выделяются*/
+  opacity: 1;
+}
+
+.modal-title {
+  font-family: "BebasNeueRegular", sans-serif;
+  font-weight: normal;
+  font-size: 24px;
+  line-height: 29px;
+  margin-top: 0;
+  margin-bottom: 25px;
+}
+
+.modal-info {
+  padding: 50px 46px;
+  width: 40%;
+}
+
+.flat-list {
+  padding: 0;
+  list-style: none;
+  margin-top: 55px;
+}
+
+.flat-item {
+  margin-bottom: 10px;
+}
+
+.flat-link {
+  font-family: Roboto;
+  color: #635854;
+  font-size: 16px;
+  line-height: 19px;
+  text-decoration: none;
+}
+
+.flat-link:hover {
+  color: #3596f5;
+  text-decoration: underline;
+}
+
+.modal-alert {
+  font-family: Roboto;
+  font-style: italic;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 19px;
+  color: #635854;
+  margin-top: 56px;
+}
+
+.modal-close-button {
+  position: absolute;
+  right: 27px;
+  top: 38px;
+  cursor: pointer;
+  border: none;
+  background-color: #fff;
 }
